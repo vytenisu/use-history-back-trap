@@ -6,7 +6,6 @@
   "scripts": {
     "prepublishOnly": "npm run build && npm run test",
     "test": "echo Tests are not implemented",
-    "testSync": "jest --runInBand --forceExit --detectOpenHandles",
     "build": "webpack",
     "buildDev": "webpack --config webpack.config.dev.js",
     "fix": "eslint --fix --ext ts"
