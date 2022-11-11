@@ -1,0 +1,65 @@
+{
+  "name": "use-history-back-trap",
+  "version": "1.0.0",
+  "description": "Intercepts browser's back navigation allowing to resume it later if needed",
+  "main": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build && npm run test",
+    "test": "echo Tests are not implemented",
+    "testSync": "jest --runInBand --forceExit --detectOpenHandles",
+    "build": "webpack",
+    "buildDev": "webpack --config webpack.config.dev.js",
+    "fix": "eslint --fix --ext ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vytenisu/use-history-back-trap.git"
+  },
+  "keywords": [
+    "react",
+    "browser",
+    "history",
+    "intercept",
+    "interception",
+    "prevent",
+    "prevention",
+    "back",
+    "pop",
+    "confirm",
+    "confirmation",
+    "resume",
+    "resuming",
+    "hook",
+    "vytenis",
+    "urbonavicius",
+    "vytenisu",
+    "WhiteTurbine",
+    "Whitend"
+  ],
+  "author": {
+    "name": "Vytenis Urbonavičius",
+    "url": "https://github.com/vytenisu"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vytenisu/use-history-back-trap/issues"
+  },
+  "homepage": "https://github.com/vytenisu/use-history-back-trap",
+  "devDependencies": {
+    "@types/react": "^18.0.25",
+    "@typescript-eslint/eslint-plugin": "^5.42.1",
+    "@typescript-eslint/parser": "^5.42.1",
+    "eslint": "^8.27.0",
+    "eslint-webpack-plugin": "^3.2.0",
+    "find-node-modules": "^2.1.3",
+    "license-webpack-plugin": "^4.0.2",
+    "npm-dts-webpack-plugin": "^1.3.12",
+    "react": "^18.2.0",
+    "ts-loader": "^9.4.1",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
