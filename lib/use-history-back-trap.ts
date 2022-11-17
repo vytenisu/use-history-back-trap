@@ -1,4 +1,4 @@
-import {useEffect} from 'react'
+import React from 'react'
 
 const BACK_EVENT_TYPE = 'popstate'
 const DEFAULT_TRAP_FLAG = 'backTrap'
@@ -19,6 +19,7 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
   const isInsideTrap = () => Boolean(window.history.state[trapFlag])
 
   const injectTrap = () => {
+    console.log('Injecting trap')
     const timestamp = new Date().getTime()
     window.history.replaceState({[trapFlag]: true, [trapTime]: timestamp}, null, window.location.href)
     window.history.pushState({[trapTime]: timestamp}, null, window.location.href)
@@ -28,11 +29,11 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
     window.history.back()
   }
 
-  useEffect(() => {
+  React.useEffect(() => {
     injectTrap()
   }, [])
 
-  useEffect(() => {
+  React.useEffect(() => {
     let expectedTime = getStepTimestamp()
 
     const isCorrectTimestamp = (timestamp: number) => timestamp && expectedTime && expectedTime === timestamp
