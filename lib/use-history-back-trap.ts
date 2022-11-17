@@ -19,7 +19,6 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
   const isInsideTrap = () => Boolean(window.history.state[trapFlag])
 
   const injectTrap = () => {
-    console.log('Injecting trap')
     const timestamp = new Date().getTime()
     window.history.replaceState({[trapFlag]: true, [trapTime]: timestamp}, null, window.location.href)
     window.history.pushState({[trapTime]: timestamp}, null, window.location.href)
