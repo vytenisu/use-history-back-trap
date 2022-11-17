@@ -30,6 +30,9 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
 
   useEffect(() => {
     injectTrap()
+  }, [])
+
+  useEffect(() => {
     let expectedTime = getStepTimestamp()
 
     const isCorrectTimestamp = (timestamp: number) => timestamp && expectedTime && expectedTime === timestamp
@@ -55,5 +58,5 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
     return () => {
       window.removeEventListener(BACK_EVENT_TYPE, trap)
     }
-  }, [])
+  }, [trapHandler])
 }
