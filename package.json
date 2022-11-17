@@ -1,6 +1,6 @@
 {
   "name": "use-history-back-trap",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Intercepts browser's back navigation allowing to resume it later if needed",
   "main": "dist/index.js",
   "scripts": {

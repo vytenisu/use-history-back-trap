@@ -12,6 +12,8 @@ export interface HistoryBackTrapOptions {
 }
 
 export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?: HistoryBackTrapOptions) => {
+  const expectedTimeRef = React.useRef()
+
   const trapFlag = options?.trapFlag ?? DEFAULT_TRAP_FLAG
   const trapTime = options?.trapTime ?? DEFAULT_TRAP_TIME
 
@@ -30,12 +32,12 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
 
   React.useEffect(() => {
     injectTrap()
+    expectedTimeRef.current = getStepTimestamp()
   }, [])
 
   React.useEffect(() => {
-    let expectedTime = getStepTimestamp()
-
-    const isCorrectTimestamp = (timestamp: number) => timestamp && expectedTime && expectedTime === timestamp
+    const isCorrectTimestamp = (timestamp: number) =>
+      timestamp && expectedTimeRef.current && expectedTimeRef.current === timestamp
 
     const trap = async () => {
       if (isInsideTrap()) {
@@ -48,7 +50,7 @@ export const useHistoryBackTrap = (trapHandler: HistoryBackTrapHandler, options?
 
         if (!approved) {
           injectTrap()
-          expectedTime = getStepTimestamp()
+          expectedTimeRef.current = getStepTimestamp()
         }
       }
     }
